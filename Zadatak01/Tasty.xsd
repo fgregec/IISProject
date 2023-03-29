@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Recipe">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:int" name="Count"/>
+        <xs:element name="Results">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Result">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Tags">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Tag" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="Type"/>
+                                <xs:element type="xs:string" name="Name"/>
+                                <xs:element type="xs:int" name="Id"/>
+                                <xs:element type="xs:string" name="DisplayName"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Show">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="Name"/>
+                          <xs:element type="xs:int" name="Id"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="OriginalVideoUrl"/>
+                    <xs:element type="xs:int" name="Id"/>
+                    <xs:element name="Sections">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Section" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Components">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Component" maxOccurs="unbounded" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="RawText"/>
+                                            <xs:element type="xs:string" name="ExtraComment"/>
+                                            <xs:element name="Ingredient">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="Name"/>
+                                                  <xs:element type="xs:int" name="CreatedAt"/>
+                                                  <xs:element type="xs:string" name="DisplayPlural"/>
+                                                  <xs:element type="xs:int" name="Id"/>
+                                                  <xs:element type="xs:string" name="DisplaySingular"/>
+                                                  <xs:element type="xs:int" name="UpdatedAt"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element type="xs:int" name="Id"/>
+                                            <xs:element type="xs:int" name="Position"/>
+                                            <xs:element name="Measurements">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="Measurement" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="Unit">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element type="xs:string" name="System"/>
+                                                              <xs:element type="xs:string" name="Name"/>
+                                                              <xs:element type="xs:string" name="DisplayPlural"/>
+                                                              <xs:element type="xs:string" name="DisplaySingular"/>
+                                                              <xs:element type="xs:string" name="Abbreviation"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element type="xs:string" name="Quantity"/>
+                                                        <xs:element type="xs:int" name="Id"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element type="xs:string" name="Name" minOccurs="0"/>
+                                <xs:element type="xs:int" name="Position"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="Description"/>
+                    <xs:element type="xs:string" name="Yields"/>
+                    <xs:element type="xs:string" name="Country"/>
+                    <xs:element type="xs:int" name="PrepTimeMinutes"/>
+                    <xs:element type="xs:string" name="DraftStatus"/>
+                    <xs:element type="xs:string" name="Language"/>
+                    <xs:element name="Credits">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Credit">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="Name"/>
+                                <xs:element type="xs:string" name="Type"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:int" name="CookTimeMinutes"/>
+                    <xs:element type="xs:int" name="NumServings"/>
+                    <xs:element type="xs:string" name="Nutrition"/>
+                    <xs:element type="xs:string" name="Name"/>
+                    <xs:element type="xs:string" name="VideoUrl"/>
+                    <xs:element name="Instructions">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Instruction" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:int" name="Id"/>
+                                <xs:element type="xs:int" name="Position"/>
+                                <xs:element type="xs:string" name="DisplayText"/>
+                                <xs:element type="xs:int" name="StartTime"/>
+                                <xs:element type="xs:int" name="EndTime"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="Slug"/>
+                    <xs:element type="xs:string" name="ThumbnaillUrl"/>
+                    <xs:element type="xs:int" name="TotalTimeMinutes"/>
+                    <xs:element name="UserRatings">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:int" name="CountPositive"/>
+                          <xs:element type="xs:float" name="Score"/>
+                          <xs:element type="xs:int" name="CountNegative"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

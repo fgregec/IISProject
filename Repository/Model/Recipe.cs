@@ -25,7 +25,7 @@ namespace Repository.Model
         public Show Show { get; set; }
 
         [JsonProperty("original_video_url")]
-        public Uri OriginalVideoUrl { get; set; }
+        public string OriginalVideoUrl { get; set; }
 
         [JsonProperty("id")]
         public long Id { get; set; }
@@ -67,10 +67,7 @@ namespace Repository.Model
         public string Name { get; set; }
 
         [JsonProperty("video_url")]
-        public Uri VideoUrl { get; set; }
-
-        [JsonProperty("renditions")]
-        public List<Rendition> Renditions { get; set; }
+        public string VideoUrl { get; set; }
 
         [JsonProperty("instructions")]
         public List<Instruction> Instructions { get; set; }
@@ -79,7 +76,7 @@ namespace Repository.Model
         public string Slug { get; set; }
 
         [JsonProperty("thumbnail_url")]
-        public Uri ThumbnailUrl { get; set; }
+        public string ThumbnaillUrl { get; set; }
 
         [JsonProperty("total_time_minutes")]
         public long TotalTimeMinutes { get; set; }
@@ -123,48 +120,6 @@ namespace Repository.Model
 
     public partial class Nutrition
     {
-    }
-
-    public partial class Rendition
-    {
-        [JsonProperty("poster_url")]
-        public Uri PosterUrl { get; set; }
-
-        [JsonProperty("url")]
-        public Uri Url { get; set; }
-
-        [JsonProperty("duration")]
-        public long Duration { get; set; }
-
-        [JsonProperty("aspect")]
-        public string Aspect { get; set; }
-
-        [JsonProperty("minimum_bit_rate")]
-        public long? MinimumBitRate { get; set; }
-
-        [JsonProperty("maximum_bit_rate")]
-        public long? MaximumBitRate { get; set; }
-
-        [JsonProperty("height")]
-        public long Height { get; set; }
-
-        [JsonProperty("container")]
-        public string Container { get; set; }
-
-        [JsonProperty("file_size")]
-        public long? FileSize { get; set; }
-
-        [JsonProperty("bit_rate")]
-        public long? BitRate { get; set; }
-
-        [JsonProperty("content_type")]
-        public string ContentType { get; set; }
-
-        [JsonProperty("width")]
-        public long Width { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
     }
 
     public partial class Section
