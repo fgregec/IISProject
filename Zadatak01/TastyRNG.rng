@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rng:grammar xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" ns="" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+   <rng:start combine="choice">
+      <rng:ref name="Recipe" />
+   </rng:start>
+   <rng:define name="Recipe">
+      <rng:element name="Recipe">
+         <rng:element name="Count">
+            <rng:data type="int" />
+         </rng:element>
+         <rng:element name="Results">
+            <rng:element name="Result">
+               <rng:element name="Tags">
+                  <rng:zeroOrMore>
+                     <rng:element name="Tag">
+                        <rng:element name="Type">
+                           <rng:data type="string" />
+                        </rng:element>
+                        <rng:element name="Name">
+                           <rng:data type="string" />
+                        </rng:element>
+                        <rng:element name="Id">
+                           <rng:data type="int" />
+                        </rng:element>
+                        <rng:element name="DisplayName">
+                           <rng:data type="string" />
+                        </rng:element>
+                     </rng:element>
+                  </rng:zeroOrMore>
+               </rng:element>
+               <rng:element name="Show">
+                  <rng:element name="Name">
+                     <rng:data type="string" />
+                  </rng:element>
+                  <rng:element name="Id">
+                     <rng:data type="int" />
+                  </rng:element>
+               </rng:element>
+               <rng:element name="OriginalVideoUrl">
+                  <rng:data type="string" />
+               </rng:element>
+               <rng:element name="Id">
+                  <rng:data type="int" />
+               </rng:element>
+               <rng:element name="Sections">
+                  <rng:zeroOrMore>
+                     <rng:element name="Section">
+                        <rng:element name="Components">
+                           <rng:zeroOrMore>
+                              <rng:element name="Component">
+                                 <rng:element name="RawText">
+                                    <rng:data type="string" />
+                                 </rng:element>
+                                 <rng:element name="ExtraComment">
+                                    <rng:data type="string" />
+                                 </rng:element>
+                                 <rng:element name="Ingredient">
+                                    <rng:element name="Name">
+                                       <rng:data type="string" />
+                                    </rng:element>
+                                    <rng:element name="CreatedAt">
+                                       <rng:data type="int" />
+                                    </rng:element>
+                                    <rng:element name="DisplayPlural">
+                                       <rng:data type="string" />
+                                    </rng:element>
+                                    <rng:element name="Id">
+                                       <rng:data type="int" />
+                                    </rng:element>
+                                    <rng:element name="DisplaySingular">
+                                       <rng:data type="string" />
+                                    </rng:element>
+                                    <rng:element name="UpdatedAt">
+                                       <rng:data type="int" />
+                                    </rng:element>
+                                 </rng:element>
+                                 <rng:element name="Id">
+                                    <rng:data type="int" />
+                                 </rng:element>
+                                 <rng:element name="Position">
+                                    <rng:data type="int" />
+                                 </rng:element>
+                                 <rng:element name="Measurements">
+                                    <rng:zeroOrMore>
+                                       <rng:element name="Measurement">
+                                          <rng:element name="Unit">
+                                             <rng:element name="System">
+                                                <rng:data type="string" />
+                                             </rng:element>
+                                             <rng:element name="Name">
+                                                <rng:data type="string" />
+                                             </rng:element>
+                                             <rng:element name="DisplayPlural">
+                                                <rng:data type="string" />
+                                             </rng:element>
+                                             <rng:element name="DisplaySingular">
+                                                <rng:data type="string" />
+                                             </rng:element>
+                                             <rng:element name="Abbreviation">
+                                                <rng:data type="string" />
+                                             </rng:element>
+                                          </rng:element>
+                                          <rng:element name="Quantity">
+                                             <rng:data type="string" />
+                                          </rng:element>
+                                          <rng:element name="Id">
+                                             <rng:data type="int" />
+                                          </rng:element>
+                                       </rng:element>
+                                    </rng:zeroOrMore>
+                                 </rng:element>
+                              </rng:element>
+                           </rng:zeroOrMore>
+                        </rng:element>
+                        <rng:optional>
+                           <rng:element name="Name">
+                              <rng:data type="string" />
+                           </rng:element>
+                        </rng:optional>
+                        <rng:element name="Position">
+                           <rng:data type="int" />
+                        </rng:element>
+                     </rng:element>
+                  </rng:zeroOrMore>
+               </rng:element>
+               <rng:element name="Description">
+                  <rng:data type="string" />
+               </rng:element>
+               <rng:element name="Yields">
+                  <rng:data type="string" />
+               </rng:element>
+               <rng:element name="Country">
+                  <rng:data type="string" />
+               </rng:element>
+               <rng:element name="PrepTimeMinutes">
+                  <rng:data type="int" />
+               </rng:element>
+               <rng:element name="DraftStatus">
+                  <rng:data type="string" />
+               </rng:element>
+               <rng:element name="Language">
+                  <rng:data type="string" />
+               </rng:element>
+               <rng:element name="Credits">
+                  <rng:element name="Credit">
+                     <rng:element name="Name">
+                        <rng:data type="string" />
+                     </rng:element>
+                     <rng:element name="Type">
+                        <rng:data type="string" />
+                     </rng:element>
+                  </rng:element>
+               </rng:element>
+               <rng:element name="CookTimeMinutes">
+                  <rng:data type="int" />
+               </rng:element>
+               <rng:element name="NumServings">
+                  <rng:data type="int" />
+               </rng:element>
+               <rng:element name="Nutrition">
+                  <rng:data type="string" />
+               </rng:element>
+               <rng:element name="Name">
+                  <rng:data type="string" />
+               </rng:element>
+               <rng:element name="VideoUrl">
+                  <rng:data type="string" />
+               </rng:element>
+               <rng:element name="Instructions">
+                  <rng:zeroOrMore>
+                     <rng:element name="Instruction">
+                        <rng:element name="Id">
+                           <rng:data type="int" />
+                        </rng:element>
+                        <rng:element name="Position">
+                           <rng:data type="int" />
+                        </rng:element>
+                        <rng:element name="DisplayText">
+                           <rng:data type="string" />
+                        </rng:element>
+                        <rng:element name="StartTime">
+                           <rng:data type="int" />
+                        </rng:element>
+                        <rng:element name="EndTime">
+                           <rng:data type="int" />
+                        </rng:element>
+                     </rng:element>
+                  </rng:zeroOrMore>
+               </rng:element>
+               <rng:element name="Slug">
+                  <rng:data type="string" />
+               </rng:element>
+               <rng:element name="ThumbnaillUrl">
+                  <rng:data type="string" />
+               </rng:element>
+               <rng:element name="TotalTimeMinutes">
+                  <rng:data type="int" />
+               </rng:element>
+               <rng:element name="UserRatings">
+                  <rng:element name="CountPositive">
+                     <rng:data type="int" />
+                  </rng:element>
+                  <rng:element name="Score">
+                     <rng:data type="float" />
+                  </rng:element>
+                  <rng:element name="CountNegative">
+                     <rng:data type="int" />
+                  </rng:element>
+               </rng:element>
+            </rng:element>
+         </rng:element>
+      </rng:element>
+   </rng:define>
+</rng:grammar>

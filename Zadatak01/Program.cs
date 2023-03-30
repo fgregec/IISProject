@@ -24,8 +24,12 @@ namespace Zadatak01
                 string xml = writer.ToString();
                 Console.WriteLine(xml);
             }
-
+            Console.WriteLine();
+            Console.WriteLine("XSD VALIDATION: ");
             Console.WriteLine(ValidateXmlAgainstXsd(filePath, "../../Tasty.xsd"));
+            Console.WriteLine();
+            Console.WriteLine("RNG VALIDATION");
+            ValidateXmlAgainstRng(filePath, "../../TastyRNG.rng");
 
         }
 
@@ -50,7 +54,45 @@ namespace Zadatak01
             return isValid;
         }
 
+        public static void ValidateXmlAgainstRng(string xmlFilePath, string rbgFilePath)
+        {
+            // Load the XML document to be validated
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(xmlFilePath);
 
+            // Load the RNG schema
+            XmlSchema rngSchema = XmlSchema.Read(new XmlTextReader(rbgFilePath),null);
+
+            // Create an XML schema set containing the RNG schema
+            XmlSchemaSet schemaSet = new XmlSchemaSet();
+            schemaSet.Add(null, rbgFilePath);
+
+            // Create a validation settings object
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.ValidationType = ValidationType.Schema;
+            settings.Schemas = schemaSet;
+
+            // Attach a validation event handler
+            settings.ValidationEventHandler += (sender, e) => {
+                Console.WriteLine($"Validation error: {e.Message}");
+            };
+
+            // Create an XML reader with the validation settings
+            XmlReader reader = XmlReader.Create(xmlFilePath, settings);
+
+            // Read the XML document and validate it against the RNG schema
+            try
+            {
+                while (reader.Read()) { }
+                Console.WriteLine("XML document is valid!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("XML document is not valid!");
+                Console.WriteLine(ex);
+            }
+            
+        }
 
     }
 }
