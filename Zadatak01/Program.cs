@@ -68,9 +68,10 @@ namespace Zadatak01
                 XDocument doc = XDocument.Load(validator);
                 Console.WriteLine("True");
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                Console.WriteLine("False");
+                Console.WriteLine("False"); 
+                Console.WriteLine(e.Message);
             }
         }
             
