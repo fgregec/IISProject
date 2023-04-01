@@ -59,6 +59,10 @@
       <Project>{5E15763F-293D-44E3-9993-6E332E5AA4DA}</Project>
       <Name>Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SOAP\SOAP.csproj">
+      <Project>{61e36714-026c-4788-9860-1646fa8339ea}</Project>
+      <Name>SOAP</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

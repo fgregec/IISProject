@@ -32,7 +32,6 @@ namespace Zadatak01
             Console.WriteLine();
             Console.WriteLine("RNG VALIDATION");
             ValidateXmlAgainstRng(filePath, "../../TastyRNG.rng");
-
         }
 
         public static bool ValidateXmlAgainstXsd(string xmlFilePath, string xsdFilePath)

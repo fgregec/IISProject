@@ -80,8 +80,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Recipe.cs" />
+    <Compile Include="Model\SimpleRecipe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
+    <Compile Include="SOAPGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

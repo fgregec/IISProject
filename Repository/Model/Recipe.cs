@@ -13,7 +13,6 @@ namespace Repository.Model
 
         [JsonProperty("results")]
         public List<Result> Results { get; set; }
-
     }
 
     public partial class Result
