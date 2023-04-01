@@ -2,6 +2,7 @@
 using Repository.Model;
 using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.Http.Results;
 using System.Web.Services;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -25,9 +26,9 @@ namespace SOAP
         {
             XElement xElement = SOAPGenerator.GenerateXML();
             
-            string value = xElement.XPathSelectElement("Recipe/Id[text()='" + query + "']/parent::Recipe").ToString();
+            var result = xElement.XPathSelectElements($"//Recipe[Rating='{query}']");
 
-            return value;
+            return result != null ? string.Join("", result) : "";
         }
 
 
