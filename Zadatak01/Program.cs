@@ -5,6 +5,8 @@ using Repository.Model;
 using System.Xml.Schema;
 using System.Xml;
 using System.Text;
+using System.Xml.Linq;
+using Commons.Xml.Relaxng;
 
 namespace Zadatak01
 {
@@ -44,7 +46,7 @@ namespace Zadatak01
             settings.ValidationType = ValidationType.Schema;
             settings.Schemas = schemaSet;
             settings.ValidationEventHandler += (sender, e) => { isValid = false; };
-            
+
 
             using (XmlReader reader = XmlReader.Create(xmlFilePath, settings))
             {
@@ -54,45 +56,30 @@ namespace Zadatak01
             return isValid;
         }
 
-        public static void ValidateXmlAgainstRng(string xmlFilePath, string rbgFilePath)
+
+        public static void ValidateXmlAgainstRng(string xmlFilePath, string relaxFilePath)
         {
-            // Load the XML document to be validated
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(xmlFilePath);
-
-            // Load the RNG schema
-            XmlSchema rngSchema = XmlSchema.Read(new XmlTextReader(rbgFilePath),null);
-
-            // Create an XML schema set containing the RNG schema
-            XmlSchemaSet schemaSet = new XmlSchemaSet();
-            schemaSet.Add(null, rbgFilePath);
-
-            // Create a validation settings object
-            XmlReaderSettings settings = new XmlReaderSettings();
-            settings.ValidationType = ValidationType.Schema;
-            settings.Schemas = schemaSet;
-
-            // Attach a validation event handler
-            settings.ValidationEventHandler += (sender, e) => {
-                Console.WriteLine($"Validation error: {e.Message}");
-            };
-
-            // Create an XML reader with the validation settings
-            XmlReader reader = XmlReader.Create(xmlFilePath, settings);
-
-            // Read the XML document and validate it against the RNG schema
             try
             {
-                while (reader.Read()) { }
-                Console.WriteLine("XML document is valid!");
+                XmlReader xml = XmlReader.Create(xmlFilePath);
+                XmlReader relax = XmlReader.Create(relaxFilePath);
+
+                var validator = new RelaxngValidatingReader(xml, relax);
+                XDocument doc = XDocument.Load(validator);
+                Console.WriteLine("True");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("XML document is not valid!");
-                Console.WriteLine(ex);
+                Console.WriteLine("False");
             }
-            
         }
+            
+        
+
+
 
     }
 }
+
+    
+
