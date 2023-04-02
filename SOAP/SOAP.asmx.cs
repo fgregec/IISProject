@@ -1,10 +1,13 @@
 ﻿using Repository;
 using Repository.Model;
+using System;
 using System.Collections.Generic;
-using System.Web.Http;
-using System.Web.Http.Results;
+using System.Linq;
+using System.Text;
 using System.Web.Services;
+using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using System.Xml.XPath;
 
 namespace SOAP
@@ -25,10 +28,19 @@ namespace SOAP
         public string Query(string query)
         {
             XElement xElement = SOAPGenerator.GenerateXML();
-            
-            var result = xElement.XPathSelectElements($"//Recipe[Rating='{query}']");
 
-            return result != null ? string.Join("", result) : "";
+            string filePath = "C:\\TastyGeneratedXPATH.xml";
+
+
+            IEnumerable<XElement> result = xElement.XPathSelectElements($"//Recipe[Rating='{query}']");
+
+            XElement recipes = new XElement("Recipes", result);
+            recipes.Save(filePath);
+
+            StringBuilder sb = new StringBuilder();
+            result.ToList().ForEach(e => sb.Append(e));
+
+            return sb.ToString();
         }
 
 
