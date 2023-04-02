@@ -31,7 +31,6 @@ namespace SOAP
 
             string filePath = "C:\\TastyGeneratedXPATH.xml";
 
-
             IEnumerable<XElement> result = xElement.XPathSelectElements($"//Recipe[Rating='{query}']");
 
             XElement recipes = new XElement("Recipes", result);
@@ -42,8 +41,5 @@ namespace SOAP
 
             return sb.ToString();
         }
-
-
-
     }
 }
