@@ -76,8 +76,16 @@ namespace API
         }
 
         [HttpGet]
-        public void SOAP(string query)
+        public string CheckSoap(string query)
         {
+            try
+            {
+                SOAPReference.SOAPSoapClient klijent = new SOAPReference.SOAPSoapClient(SOAPReference.SOAPSoapClient.EndpointConfiguration.SOAPSoap);
+                return klijent.Query(query);
+            } catch(Exception ex)
+            {
+                return "Error";
+            }
 
         }
 
@@ -94,7 +102,7 @@ namespace API
                 {
                     serializer.Serialize(writer, Repository.Repository.GetRecipe());
                 }
-            }catch(Exception e){
+            }catch(Exception ex){
                 
             }
         }
