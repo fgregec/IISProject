@@ -1,5 +1,4 @@
-﻿using Repository;
-using Repository.Model;
+﻿using SOAP.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +21,7 @@ namespace SOAP
     // [System.Web.Script.Services.ScriptService]
     public class SOAP : System.Web.Services.WebService
     {
-        private List<SimpleRecipe> recipeList = Repository.SOAPGenerator.GetRecipes();
+        private List<SimpleRecipe> recipeList = SOAPGenerator.GetRecipes();
 
         [WebMethod]
         public string Query(string query)

@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using Repository.Model;
+﻿using API.Model;
+using Newtonsoft.Json;
 using RestSharp;
 
-namespace Repository
+namespace API
 {
     public static class Repository
     {
