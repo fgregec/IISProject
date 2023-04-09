@@ -20,11 +20,10 @@ namespace API.Controllers
         string filePathRNG = "../TastyRNG.rng";
 
         [HttpGet("XSD")]
-        public bool ValidateAgainstXSD() 
+        public string ValidateAgainstXSD() 
         {
             GenerateXML();
-
-            bool isValid = true;
+            string valid = "XML valid";
 
             XmlSchemaSet schemaSet = new XmlSchemaSet();
             schemaSet.Add("", filePathXSD);
@@ -32,7 +31,7 @@ namespace API.Controllers
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.ValidationType = ValidationType.Schema;
             settings.Schemas = schemaSet;
-            settings.ValidationEventHandler += (sender, e) => { isValid = false; };
+            settings.ValidationEventHandler += (sender, e) => { valid = "XML not valid"; };
 
 
             using (XmlReader reader = XmlReader.Create(filePathXML, settings))
@@ -40,26 +39,27 @@ namespace API.Controllers
                 while (reader.Read()) { }
             }
 
-            return isValid;
+            return valid;
         }
 
         [HttpGet("RELAX")]
-        public bool ValidateAgainstRNG()
+        public string ValidateAgainstRNG()
         {
             GenerateXML();
 
             try
             {
-                XmlReader xml = XmlReader.Create(filePathXML);
-                XmlReader relax = XmlReader.Create(filePathRNG);
-
-                var validator = new RelaxngValidatingReader(xml, relax);
-                XDocument doc = XDocument.Load(validator);
-                return true;
+                using (XmlReader xml = XmlReader.Create(filePathXML))
+                using (XmlReader relax = XmlReader.Create(filePathRNG))
+                using (var validator = new RelaxngValidatingReader(xml, relax))
+                {
+                    XDocument doc = XDocument.Load(validator);
+                    return "XML valid";
+                }
             }
             catch (Exception e)
             {
-                return false;
+                return "XML not valid";
             }
         }
 
@@ -69,6 +69,7 @@ namespace API.Controllers
             SOAPSoapClient klijent = new SOAPSoapClient(SOAPSoapClient.EndpointConfiguration.SOAPSoap);
             return klijent.Query(rating);
         }
+
 
         public void GenerateXML() 
         {
