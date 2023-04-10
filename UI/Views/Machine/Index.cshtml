@@ -4,6 +4,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@if (ViewBag.Soap == 1)
+{
+    using (Html.BeginForm("RequestSoap", "Machine", FormMethod.Get))
+    {
+        <h4>Enter your query:</h4>
+        @Html.TextBox("rating")
+        <br />
+        <button type="submit" class="btn btn-primary mb-5 mt-5">SEARCH</button>
+        <h3>@ViewBag.Result</h3>
+    }
+
+}
+
+
 <h2>@ViewBag.Result</h2>
 
 @Html.ActionLink("RETURN HOME", "Index", "Home", null, new { @class = "btn btn-success mb-5" })

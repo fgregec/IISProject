@@ -17,6 +17,9 @@ namespace UI.Controllers
                 case "relax":
                     ViewBag.Result = await RequestRelax();
                     break;
+                case "soap":
+                    ViewBag.Soap = 1;
+                    break;
                 default:
                     break;
             }
@@ -43,16 +46,17 @@ namespace UI.Controllers
             }
         }
 
-        //public async Task<string> RequestXSD()
-        //{
-        //    using (HttpClient httpClient = new HttpClient())
-        //    {
-        //        string apiEndpoint = "http://localhost:5250/api/xml/xsd";
-        //        HttpResponseMessage response = await httpClient.GetAsync(apiEndpoint);
-        //        string responseContent = await response.Content.ReadAsStringAsync();
-        //        return responseContent;
-        //    }
-        //}
+        public async Task<ActionResult> RequestSoap(string rating)
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                string apiEndpoint = $"http://localhost:5250/api/xml/soap?rating={rating}";
+                HttpResponseMessage response = await httpClient.GetAsync(apiEndpoint);
+                string responseContent = await response.Content.ReadAsStringAsync();
+                ViewBag.Result = responseContent;
+            }
+            return View("Index");
+        }
 
     }
 }
